@@ -1,0 +1,22 @@
+// mixins.scss
+// Reusable mixins for OM CASTINGS
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin responsive-font($sm, $lg) {
+    font-size: $sm;
+  
+    @media (min-width: $breakpoint-md) {
+      font-size: $lg;
+    }
+  }
+  
+  @mixin hidden {
+    display: none;
+  }
+  
+  

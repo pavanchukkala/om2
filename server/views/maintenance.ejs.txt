@@ -1,0 +1,71 @@
+// server/views/maintenance.ejs
+// Maintenance page template
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    .message {
+      text-align: center;
+    }
+    h1 {
+      color: #ff6b6b;
+    }
+    p {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1>We’ll be back soon!</h1>
+    <p>Our site is currently undergoing scheduled maintenance. Thank you for your patience.</p>
+  </div>
+</body>
+</html>
+
+// server/controllers/userController.js
+// User-related API logic
+
+const getUser = (req, res) => {
+  const userId = req.params.id;
+  // Fetch user data from database (mock example)
+  const user = { id: userId, name: "John Doe", email: "john.doe@example.com" };
+  res.status(200).json(user);
+};
+
+const updateUser = (req, res) => {
+  const userId = req.params.id;
+  const updates = req.body;
+  // Perform update logic (mock example)
+  const updatedUser = { id: userId, ...updates };
+  res.status(200).json(updatedUser);
+};
+
+module.exports = { getUser, updateUser };
+
+// server/controllers/contentController.js
+// Content-related API logic
+
+const getContent = (req, res) => {
+  // Fetch content data (mock example)
+  const content = [
+    { id: 1, title: "Welcome to our site", body: "We’re glad you’re here!" },
+    { id: 2, title: "About Us", body: "Learn more about what we do." },
+  ];
+  res.status(200).json(content);
+};
+
+module.exports = { getContent };

@@ -1,0 +1,19 @@
+# docker-compose.yml
+# Docker services orchestration
+
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+      - MONGO_URI=mongodb://mongo:27017/appdb
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:5
+    container_name: mongodb
+    ports:
+      - "27017:27017"

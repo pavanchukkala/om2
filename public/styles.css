@@ -1,0 +1,134 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F8F9FA;
+    color: #4F4F4F;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+.header {
+    background: #2C2C2C;
+    padding: 15px 30px;
+    color: #FFFFFF;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 15px;
+}
+
+.navbar .menu a {
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu a:hover {
+    color: #D4AF37;
+}
+
+/* Hero Section */
+.hero {
+    height: 90vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('assets/images/hero.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.primary-btn {
+    background: #FF6A00;
+    color: #FFFFFF;
+}
+
+.primary-btn:hover {
+    background: #D4AF37;
+    transform: scale(1.1);
+}
+
+/* Products Section */
+.products {
+    padding: 50px;
+    background: #F8F9FA;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+    background: #2C2C2C;
+    color: #FFFFFF;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer .social-links a {
+    color: #D4AF37;
+    transition: color 0.3s ease;
+}
+
+.footer .social-links a:hover {
+    color: #FF6A00;
+}
