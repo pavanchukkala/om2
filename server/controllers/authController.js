@@ -1,47 +1,44 @@
-// server/controllers/authController.js
-const User = require('../models/User'); // Assuming you have a User model
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const User = require('../models/User');
 
-// Register new user
+// Password Hashing using PBKDF2 and Salt
+const hashPassword = (password) => {
+    const salt = crypto.randomBytes(16).toString('hex'); // Generate a random salt
+    const hashedPassword = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    return { salt, hashedPassword };
+}
+
+// Password Comparison using PBKDF2 and Salt
+const comparePassword = (salt, hashedPassword, password) => {
+    const hashedEnteredPassword = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    return hashedEnteredPassword === hashedPassword;
+}
+
+// Register User
 exports.register = async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new User({
-      username,
-      password: hashedPassword,
-    });
-
+    const { username, email, password } = req.body;
+    
+    const { salt, hashedPassword } = hashPassword(password);  // crypto for hashing
+    
+    const newUser = new User({ username, email, password: hashedPassword, salt });  // store salt
     await newUser.save();
     res.status(201).json({ message: 'User registered successfully' });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
-  }
 };
 
-// Login user
+// Login User
 exports.login = async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+        return res.status(404).json({ message: 'User not found' });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = comparePassword(user.salt, user.password, password);  // crypto for comparison
+
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+        return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
-
-    res.json({ token });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error });
-  }
+    res.status(200).json({ message: 'Login successful' });
 };
