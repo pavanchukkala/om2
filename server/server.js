@@ -1,40 +1,32 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 
-// Middleware to log requests
-app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
-    next();
-});
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/om-castings', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Database connection error:', err));
 
-// Connect to MongoDB
-const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/your-database-name';
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('MongoDB connection error:', err));
-
-// Body parser middleware (if needed)
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Serve static files for a frontend app (if applicable)
-const buildPath = path.join(__dirname, 'build');
+// Middleware for serving static files
+const buildPath = path.join(__dirname, '../build');
 app.use(express.static(buildPath));
 
-// Root route for testing
+// API Endpoints (Add your custom endpoints here)
+app.get('/api/example', (req, res) => {
+    res.json({ message: 'Hello from the server!' });
+});
+
+// Serve React frontend
 app.get('/', (req, res) => {
-    res.send('Welcome to Om Castings!');
+    res.sendFile(path.join(buildPath, 'index.html'));
 });
 
-// Example API route
-app.get('/api/data', (req, res) => {
-    res.json({ message: 'API is working!' });
-});
-
-// Catch-all route to serve the frontend app
+// Catch-all route for Single Page Application (SPA)
 app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
 });
