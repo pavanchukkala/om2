@@ -35,10 +35,9 @@ app.use(errorHandler);
 // Connect to MongoDB and start the server
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true, // Ensures index creation support
+    mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
     });
     console.log('Connected to MongoDB');
     app.listen(PORT, () => {
