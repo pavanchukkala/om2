@@ -4,8 +4,8 @@
     "description": "Application for OM CASTINGS",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
-        "dev": "nodemon server.js",
+        "start": "node server/server.js",
+        "dev": "nodemon server/server.js",
         "test": "jest"
     },
     "dependencies": {
@@ -21,9 +21,4 @@
     },
     "author": "Your Name",
     "license": "ISC"
-    
-    "scripts": {
-    "start": "node server/server.js"
-}
-
 }
