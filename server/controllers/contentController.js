@@ -1,14 +1,16 @@
 // server/controllers/contentController.js
-// Content-related API logic
 
+// Example implementation
 const getContent = (req, res) => {
-    // Fetch content data (mock example)
-    const content = [
-      { id: 1, title: "Welcome to our site", body: "We’re glad you’re here!" },
-      { id: 2, title: "About Us", body: "Learn more about what we do." },
-    ];
-    res.status(200).json(content);
-  };
-  
-  module.exports = { getContent };
-  
+    res.json({ message: 'Get content successful' });
+};
+
+const createContent = (req, res) => {
+    const content = req.body;
+    res.status(201).json({ message: 'Content created', data: content });
+};
+
+module.exports = {
+    getContent,
+    createContent,
+};
