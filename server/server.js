@@ -21,7 +21,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Serve Static Files (React build files)
-const frontendPath = path.join(__dirname, "../frontend/build");
+const frontendPath = path.join(__dirname, "public/index.html");
 app.use(express.static(frontendPath));
 
 // API Routes
