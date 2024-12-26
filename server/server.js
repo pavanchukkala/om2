@@ -21,7 +21,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Serve Static Files (React build files)
-const frontendPath = path.join(__dirname, "public/index.html");
+const frontendPath = path.join(__dirname, "public");
 app.use(express.static(frontendPath));
 
 // API Routes
@@ -32,6 +32,7 @@ app.use("/api/content", require("./routes/contentRoutes")); // Example: Content-
 app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"), (err) => {
     if (err) {
+      console.error("Error serving index.html:", err);
       res.status(500).send(err);
     }
   });
