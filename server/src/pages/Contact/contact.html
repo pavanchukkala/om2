@@ -3,149 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <meta name="description" content="OM CASTINGS - Contact Us for High-Quality Excavator Bucket Tooth Castings">
+    <title>Contact Us - OM CASTINGS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+        /* Reset and Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #74ebd5, #9face6);
-            color: #333;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* Header */
+        .header {
+            background-color: #333;
+            padding: 1rem 2rem;
+        }
+        .navbar {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
         }
-
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .menu li a {
+            color: #fff;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .menu li a:hover {
+            color: #00bcd4;
+        }
+        /* Contact Page Styles */
         .contactpage {
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
             padding: 2rem;
-            max-width: 500px;
-            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
         .contactpage__title {
             font-size: 2rem;
-            font-weight: 700;
-            color: #4A4A4A;
             margin-bottom: 1.5rem;
             text-align: center;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
         }
-
-        .contactpage__success {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #28a745;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
         .contactpage__form {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
-
         .contactpage__label {
             display: flex;
             flex-direction: column;
             font-size: 1rem;
-            color: #4A4A4A;
+            color: #555;
         }
-
-        .contactpage__input, 
+        .contactpage__input,
         .contactpage__textarea {
-            border: 1px solid #ccc;
-            border-radius: 4px;
             padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-size: 1rem;
-            transition: border-color 0.3s;
+            font-family: inherit;
         }
-
-        .contactpage__input:focus, 
-        .contactpage__textarea:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
         .contactpage__textarea {
             resize: none;
             height: 120px;
         }
-
+        .contactpage__button {
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .contactpage__button:hover {
+            background-color: #0194a5;
+            transform: scale(1.05);
+        }
+        .contactpage__success {
+            display: none;
+            color: #28a745;
+            text-align: center;
+            margin-top: 1rem;
+        }
         .contactpage__error {
             color: #d9534f;
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
-
-        .contactpage__button {
-            background: linear-gradient(135deg, #6A11CB, #2575FC);
+        /* Footer */
+        .footer {
+            background-color: #333;
             color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
         }
-
-        .contactpage__button:hover {
-            background: linear-gradient(135deg, #2575FC, #6A11CB);
-            transform: translateY(-2px);
+        .footer-content p {
+            margin-bottom: 1rem;
         }
-
-        .contactpage__button:active {
-            transform: translateY(0);
+        .social-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-links li a {
+            color: #fff;
+            font-size: 1.25rem;
+            transition: color 0.3s;
+        }
+        .social-links li a:hover {
+            color: #00bcd4;
         }
     </style>
 </head>
 <body>
-    <div class="contactpage">
-        <h1 class="contactpage__title">Contact Us</h1>
-        <p id="successMessage" class="contactpage__success" style="display: none;">
-            Thank you for reaching out! We will get back to you soon.
-        </p>
-        <form id="contactForm" class="contactpage__form">
-            <label class="contactpage__label">
-                Name:
-                <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    class="contactpage__input"
-                    placeholder="Enter your name"
-                />
-                <span id="nameError" class="contactpage__error"></span>
-            </label>
-            <label class="contactpage__label">
-                Email:
-                <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    class="contactpage__input"
-                    placeholder="Enter your email"
-                />
-                <span id="emailError" class="contactpage__error"></span>
-            </label>
-            <label class="contactpage__label">
-                Message:
-                <textarea
-                    name="message"
-                    id="message"
-                    class="contactpage__textarea"
-                    placeholder="Enter your message"
-                ></textarea>
-                <span id="messageError" class="contactpage__error"></span>
-            </label>
-            <button type="submit" class="contactpage__button">Submit</button>
-        </form>
-    </div>
+    <header class="header">
+        <nav class="navbar">
+            <a href="#" class="logo">OM CASTINGS</a>
+            <ul class="menu">
+                <li><a href="server/src/pages/Home/HomePage.jsx">Home</a></li>
+                <li><a href="server/src/pages/Products/ProductsPage.jsx">Products</a></li>
+                <li><a href="server/src/pages/About/AboutPage.jsx">About</a></li>
+                <li><a href="server/src/pages/Contact/contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contactpage">
+            <h1 class="contactpage__title">Contact Us</h1>
+            <p id="successMessage" class="contactpage__success">
+                Thank you for reaching out! We will get back to you soon.
+            </p>
+            <form id="contactForm" class="contactpage__form">
+                <label class="contactpage__label">
+                    Name:
+                    <input type="text" name="name" id="name" class="contactpage__input" placeholder="Enter your name" />
+                    <span id="nameError" class="contactpage__error"></span>
+                </label>
+                <label class="contactpage__label">
+                    Email:
+                    <input type="email" name="email" id="email" class="contactpage__input" placeholder="Enter your email" />
+                    <span id="emailError" class="contactpage__error"></span>
+                </label>
+                <label class="contactpage__label">
+                    Message:
+                    <textarea name="message" id="message" class="contactpage__textarea" placeholder="Write your message"></textarea>
+                    <span id="messageError" class="contactpage__error"></span>
+                </label>
+                <button type="submit" class="contactpage__button">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 OM CASTINGS. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">LinkedIn</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </footer>
 
     <script>
         const contactForm = document.getElementById('contactForm');
@@ -185,8 +232,7 @@
 
             if (isValid) {
                 successMessage.style.display = 'block';
-                contactForm.style.display = 'none';
-                console.log('Form Submitted:', { name, email, message });
+                contactForm.reset();
             }
         });
     </script>
