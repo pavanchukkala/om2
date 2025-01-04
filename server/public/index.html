@@ -5,16 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="OM CASTINGS - Premium Excavator Bucket Tooth Castings">
     <title>OM CASTINGS</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        /* Navbar */
+        .header {
+            background-color: #333;
+            padding: 1rem 2rem;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .menu li a:hover {
+            color: #00bcd4;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('assets/images/hero-bg.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .primary-btn {
+            background-color: #00bcd4;
+            color: #fff;
+        }
+        .primary-btn:hover {
+            background-color: #0194a5;
+            transform: scale(1.05);
+        }
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background-color: #fff;
+            text-align: center;
+        }
+        .products h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .product-card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1.25rem;
+            margin: 1rem 0;
+            color: #333;
+        }
+        .product-card p {
+            padding: 0 1rem 1rem;
+            color: #555;
+        }
+        /* Footer */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+        .footer-content p {
+            margin-bottom: 1rem;
+        }
+        .social-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .social-links li a {
+            color: #fff;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .social-links li a:hover {
+            color: #00bcd4;
+        }
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .product-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
         <nav class="navbar">
             <a href="#" class="logo">OM CASTINGS</a>
             <ul class="menu">
-                <li><a href="server/src/pages/Home/HomePage.jsx">Home</a></li>
-                <li><a href="server/src/pages/Products/ProductsPage.jsx">Products</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
                 <li><a href="server/src/pages/About/AboutPage.jsx">About</a></li>
                 <li><a href="server/src/pages/Contact/contact.html">Contact</a></li>
             </ul>
